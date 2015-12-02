@@ -73,7 +73,7 @@ break;
 	String delimitador=" ";
         String[]palabras=valor.split(delimitador);
         String texto=palabras[1];
-	String fichero="/home/rabbit/"+palabras[2];
+	String fichero="~/"+palabras[2];
 	Process p=Runtime.getRuntime().exec(cmdline);
 	PrintWriter writer=new PrintWriter(fichero,"UTF-8");
 	writer.println(texto);
@@ -122,7 +122,7 @@ System.out.println(line);
 }
 
 public static void remove(String fichero)throws IOException{        
-        String command="rm /home/rabbit/"+fichero;
+        String command="rm ~/"+fichero;
         
         Process p;
         try{
