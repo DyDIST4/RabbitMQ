@@ -9,13 +9,13 @@ public class DoAction {
 
   public static void main(String[] argv) throws Exception {
     ConnectionFactory factory = new ConnectionFactory();
-    factory.setHost("localhost");
+    factory.setHost(argv[0]);
     Connection connection = factory.newConnection();
     Channel channel = connection.createChannel();
 
     channel.queueDeclare(TASK_QUEUE_NAME, false, false, false, null);
 
-    String message = getMessage(argv);
+    String message = getMessage(Arrays.copyOfRange(argv,1,argv.length));
 
     channel.basicPublish("", TASK_QUEUE_NAME,
         MessageProperties.PERSISTENT_TEXT_PLAIN,
